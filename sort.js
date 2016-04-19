@@ -4,7 +4,7 @@ var dta;
 
 function req() {
 	var apiUrl = 'http://pokeapi.co';
-	var pokemonUrl = '/api/v1/pokemon/?limit=2';
+	var pokemonUrl = '/api/v1/pokemon/?limit=12';
 
 	var xhr = new XMLHttpRequest();
 
@@ -19,38 +19,35 @@ function req() {
 
 			dta = data.objects;
 			getpokemon();
-			
+
 		} else {
 			console.log('ERR');
 
 			message.innerHTML = xhr.status + ': ' + xhr.statusText;
-			
-		}
 
-	
+		}
 }
 
 function getpokemon() {
 	var card;
 	var name;
 	var img;
-	
+
 	for(i = 0; i < dta.length; i++) {
 		card = document.createElement('div');
-		card.className = 'card__' + dta[i].name;
+		card.className = 'card';
 
 		name = document.createElement('h2');
 		name.innerHTML = dta[i].name;
-		
+
 		img = document.createElement('img');
 		img.setAttribute('src', 'http://pokeapi.co/media/img/'+ dta[i].national_id +'.png');
 
-		card.appendChild(name);
 		card.appendChild(img);
+        card.appendChild(name);
 		po.appendChild(card);
 	}
-	
+
 }
 
 req();
-
