@@ -1,0 +1,64 @@
+* {
+	@include box-sizing(border-box);
+}
+
+html {
+	font-size: 62.5%;
+	@include re(320, min) {
+		font-size: 50%;
+	}
+}
+
+body {
+	position: relative;
+	background-color: #fff;
+	line-height: 1.3em;
+	@include font-smoothing;
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	@include frem(16px);
+}
+
+header, section, aside, nav, div, article, figure, p {
+	position: relative;
+}
+
+form input {
+	@include placeholder(black);
+}
+
+form texarea {
+	@include placeholder;
+}
+
+button:focus, input:focus, textarea:focus {
+	outline: none;
+}
+
+h1 {
+	position: relative;
+	display: block;
+	@include frem(51px);
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 700;
+	line-height: 1.4em;
+	text-transform: uppercase;
+	text-align: center;
+	z-index: 999;
+}
+
+h2 {
+	position: relative;
+	display: block;
+	text-transform: uppercase;
+	text-align: center;
+	padding-top: 5px;
+	@include frem(18px);
+	color: black;
+	line-height: 1.3em;
+	z-index: 999;
+}
+
+#pokemons {
+	text-align: center;
+}
