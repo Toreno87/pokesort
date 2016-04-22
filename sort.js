@@ -1,3 +1,5 @@
+var test = '141241414124'
+
 var message = document.querySelector('.status');
 var po = document.getElementById('pokemons');
 <<<<<<< HEAD
