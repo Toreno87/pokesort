@@ -1,6 +1,7 @@
 @import 'compass/reset';
 @import 'compass/css3';
 
+<<<<<<< HEAD
 * {
     box-sizing: border-box;
 }
@@ -59,3 +60,13 @@ h2 {
 }
 
 
+=======
+@import 'utils/_mixins';
+@import 'utils/_placeholders';
+@import 'utils/_variables';
+
+@import 'base/_fonts';
+@import 'base/_general';
+@import 'layout/_card';
+
+>>>>>>> 114869063340760034810603c4627f5532784fc4

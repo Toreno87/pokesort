@@ -1,5 +1,6 @@
 var message = document.querySelector('.status');
 var po = document.getElementById('pokemons');
+<<<<<<< HEAD
 var dta;
 
 function req() {
@@ -26,12 +27,39 @@ function req() {
 			message.innerHTML = xhr.status + ': ' + xhr.statusText;
 
 		}
+=======
+var load = document.getElementById('loader');
+
+var limit = 6;
+var offset = 0;
+var dta;
+var dtaRes;
+
+var apiUrl = 'http://pokeapi.co/api/v2/pokemon/';
+var pokemonUrl;
+
+function next() {
+	pokemonUrl = apiUrl + '?limit=' + limit + '&offset=' + offset;
+	
+	req();
+	dtaRes = dta.results;
+	getpokemon();
+	
+	offset = offset + limit;
+	
+>>>>>>> 114869063340760034810603c4627f5532784fc4
 }
 
+
 function getpokemon() {
-	var card;
+	var flipCont;
+	var flipper;
+	var cardBack;
+	var cardFront;
 	var name;
+	var imgCont;
 	var img;
+<<<<<<< HEAD
 
 	for(i = 0; i < dta.length; i++) {
 		card = document.createElement('div');
@@ -40,9 +68,37 @@ function getpokemon() {
 		name = document.createElement('h2');
 		name.innerHTML = dta[i].name;
 
-		img = document.createElement('img');
-		img.setAttribute('src', 'http://pokeapi.co/media/img/'+ dta[i].national_id +'.png');
+=======
+	
+	dtaRes.forEach(function(item, i, dtaRes) {
+		pokemonUrl = item.url;
+		req();
+		
+		flipCont = document.createElement('div');
+		flipCont.className = 'flipper_container';
+		
+		flipper = document.createElement('div');
+		flipper.className = 'flipper';
+		
+		cardBack = document.createElement('div');
+		cardBack.className = 'back';
+		
+		cardFront = document.createElement('div');
+		cardFront.id = 'card__' + dta.name;
+		cardFront.className = 'front';
 
+		name = document.createElement('h2');
+		name.innerHTML = dta.name;
+		
+		imgCont = document.createElement('div');
+		imgCont.className = 'img_container';
+		
+>>>>>>> 114869063340760034810603c4627f5532784fc4
+		img = document.createElement('img');
+		
+		img.setAttribute('src', 'http://pokeapi.co/media/img/'+ dta.id +'.png');
+
+<<<<<<< HEAD
 		card.appendChild(img);
         card.appendChild(name);
 		po.appendChild(card);
@@ -51,3 +107,44 @@ function getpokemon() {
 }
 
 req();
+=======
+		
+		cardBack.appendChild(imgCont);
+		imgCont.appendChild(img);
+		cardBack.appendChild(name);
+		flipper.appendChild(cardBack);
+		flipper.appendChild(cardFront);
+		flipCont.appendChild(flipper);
+		po.appendChild(flipCont);
+	
+});
+}
+
+function req() {
+	
+	var xhr = new XMLHttpRequest();
+	
+	xhr.open('GET', pokemonUrl, false);
+	xhr.send();
+	
+		if(xhr.status == 200) {
+			message.innerHTML = "Base Pokemons";
+			load.style.display = "block";
+
+			var data = JSON.parse(xhr.responseText);
+			
+			dta = data;
+				
+			} else {
+				console.log('ERR');
+
+				message.innerHTML = xhr.status + ': ' + xhr.statusText;
+			}
+		load.style.display = "none";
+}
+
+next();
+
+
+
+>>>>>>> 114869063340760034810603c4627f5532784fc4
