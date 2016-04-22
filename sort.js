@@ -1,3 +1,4 @@
+var test;
 var message = document.querySelector('.status');
 var po = document.getElementById('pokemons');
 
