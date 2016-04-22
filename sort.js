@@ -1,141 +1,108 @@
-var message = document.querySelector('.status');
-var po = document.getElementById('pokemons');
+var elemets = {
+	message: document.querySelector('.status'),
+	po: document.getElementById('pokemons'),
+	load: document.getElementById('loader')
+};
+
+var data = {
+	limit: 6,
+	offset: 0,
+	dtaRes:0,
+	apiUrl: 'http://pokeapi.co/api/v2/pokemon/',
+	pokemonUrl:0
+};
 
 var dta;
-
-function req() {
-	var apiUrl = 'http://pokeapi.co';
-	var pokemonUrl = '/api/v1/pokemon/?limit=12';
-
-	var xhr = new XMLHttpRequest();
-
-	xhr.open('GET', apiUrl + pokemonUrl, false);
-	xhr.send();
-
-		if(xhr.status == 200) {
-			console.log('OK');
-			message.innerHTML = "Your Pokemons";
-
-			var data = JSON.parse(xhr.responseText);
-
-			dta = data.objects;
-			getpokemon();
-
-		} else {
-			console.log('ERR');
-
-			message.innerHTML = xhr.status + ': ' + xhr.statusText;
-
-		}
-    
-var load = document.getElementById('loader');
-
-var limit = 6;
-var offset = 0;
-var dta;
-var dtaRes;
-
-var apiUrl = 'http://pokeapi.co/api/v2/pokemon/';
-var pokemonUrl;
 
 function next() {
-	pokemonUrl = apiUrl + '?limit=' + limit + '&offset=' + offset;
+	data.pokemonUrl = data.apiUrl + '?limit=' + data.limit + '&offset=' + data.offset;
 	
-	req();
-	dtaRes = dta.results;
+	req(data.pokemonUrl);
+	console.log(dta);
+	data.dtaRes = dta.results;
+	
+	
 	getpokemon();
 	
-	offset = offset + limit;
+	data.offset = data.offset + data.limit;
 	
 }
 
-
-function getpokemon() {
-	var flipCont;
-	var flipper;
-	var cardBack;
-	var cardFront;
-	var name;
-	var imgCont;
-	var img;
-
-	for(i = 0; i < dta.length; i++) {
-		card = document.createElement('div');
-		card.className = 'card';
-
-		name = document.createElement('h2');
-		name.innerHTML = dta[i].name;
-
-	
-	dtaRes.forEach(function(item, i, dtaRes) {
-		pokemonUrl = item.url;
-		req();
-		
-		flipCont = document.createElement('div');
-		flipCont.className = 'flipper_container';
-		
-		flipper = document.createElement('div');
-		flipper.className = 'flipper';
-		
-		cardBack = document.createElement('div');
-		cardBack.className = 'back';
-		
-		cardFront = document.createElement('div');
-		cardFront.id = 'card__' + dta.name;
-		cardFront.className = 'front';
-
-		name = document.createElement('h2');
-		name.innerHTML = dta.name;
-		
-		imgCont = document.createElement('div');
-		imgCont.className = 'img_container';
-		
-		img = document.createElement('img');
-		
-		img.setAttribute('src', 'http://pokeapi.co/media/img/'+ dta.id +'.png');
-
-		card.appendChild(img);
-        card.appendChild(name);
-		po.appendChild(card);
-	}
-
-}
-
-req();
-		
-		cardBack.appendChild(imgCont);
-		imgCont.appendChild(img);
-		cardBack.appendChild(name);
-		flipper.appendChild(cardBack);
-		flipper.appendChild(cardFront);
-		flipCont.appendChild(flipper);
-		po.appendChild(flipCont);
-	
-});
-}
-
-function req() {
+function req(pokUrl) {
 	
 	var xhr = new XMLHttpRequest();
 	
-	xhr.open('GET', pokemonUrl, false);
+	xhr.open('GET', pokUrl, false);
 	xhr.send();
 	
 		if(xhr.status == 200) {
-			message.innerHTML = "Base Pokemons";
-			load.style.display = "block";
+			elemets.message.innerHTML = "Base Pokemons";
+			elemets.load.style.display = "block";
 
 			var data = JSON.parse(xhr.responseText);
 			
-			dta = data;
+			data.dta = data;
 				
 			} else {
 				console.log('ERR');
 
-				message.innerHTML = xhr.status + ': ' + xhr.statusText;
+				elemets.message.innerHTML = xhr.status + ': ' + xhr.statusText;
 			}
-		load.style.display = "none";
+		elemets.load.style.display = "none";
+}
+
+function getpokemon() {
+	var card = {
+		flipCont: null,
+		flipper: null,
+		cardBack: null,
+		cardFront: null,
+		name: null,
+		imgCont: null,
+		img: null
+	};
+	
+	var dtRs = data.dtaRes;
+	
+//	dtRs.forEach(function(item, i, dtRs) {
+//		
+//		pokemonUrl = item.url;
+//		req();
+//		
+//		card.flipCont = document.createElement('div');
+//		card.flipCont.className = 'flipper_container';
+//		
+//		card.flipper = document.createElement('div');
+//		card.flipper.className = 'flipper';
+//		
+//		card.cardBack = document.createElement('div');
+//		card.cardBack.className = 'back';
+//		
+//		card.cardFront = document.createElement('div');
+//		card.cardFront.id = 'card__' + data.dta.name;
+//		card.cardFront.className = 'front';
+//
+//		card.name = document.createElement('h2');
+//		card.name.innerHTML = data.dta.name;
+//		
+//		card.imgCont = document.createElement('div');
+//		card.imgCont.className = 'img_container';
+//		
+//		card.img = document.createElement('img');
+//		
+//		card.img.setAttribute('src', 'http://pokeapi.co/media/img/'+ data.dta.id +'.png');
+//
+//		card.cardBack.appendChild(imgCont);
+//		card.imgCont.appendChild(img);
+//		card.cardBack.appendChild(name);
+//		card.flipper.appendChild(cardBack);
+//		card.flipper.appendChild(cardFront);
+//		card.flipCont.appendChild(flipper);
+//		elemets.po.appendChild(flipCont);
+//	
+//		});
 }
 
 next();
+
 

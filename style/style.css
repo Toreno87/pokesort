@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-/* line 5, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-=======
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700);
 @import url(https://fonts.googleapis.com/css?family=Lato);
 /* line 5, C:/Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
->>>>>>> 114869063340760034810603c4627f5532784fc4
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -26,76 +22,49 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, C:/Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, C:/Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, C:/Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, C:/Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, C:/Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, C:/Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, C:/Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, C:/Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
-<<<<<<< HEAD
-/* line 4, ../sass/style.scss */
-* {
-  box-sizing: border-box;
-}
-
-/* line 8, ../sass/style.scss */
-body {
-  text-align: center;
-  background-color: antiquewhite;
-}
-
-/* line 13, ../sass/style.scss */
-h2 {
-  font-family: 'Arimo', sans-serif;
-}
-
-/* line 17, ../sass/style.scss */
-.status {
-  font-family: 'Arimo', sans-serif;
-  font-weight: 800;
-  font-size: 24px;
-}
-
-/* line 23, ../sass/style.scss */
-.preloader {
-=======
 /* line 1, ../sass/base/_general.scss */
 * {
   -moz-box-sizing: border-box;
@@ -227,17 +196,9 @@ button {
 
 /* line 83, ../sass/base/_general.scss */
 #loader {
->>>>>>> 114869063340760034810603c4627f5532784fc4
   position: fixed;
   width: 100%;
   height: 100%;
-<<<<<<< HEAD
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-/* line 33, ../sass/style.scss */
-.spiner {
-=======
   background: url(../img/loader.gif) no-repeat center;
   background-color: rgba(255, 255, 255, 0.85);
   z-index: 9999;
@@ -296,7 +257,6 @@ button {
   -moz-backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
->>>>>>> 114869063340760034810603c4627f5532784fc4
   position: absolute;
   top: 0;
   left: 0;
@@ -338,24 +298,4 @@ button {
 .img_container img {
   display: block;
   margin: 0 auto;
-}
-
-/* line 45, ../sass/style.scss */
-#pokemons {
-  width: 60%;
-  margin: 0 auto;
-}
-/* line 48, ../sass/style.scss */
-#pokemons .card {
-  display: inline-block;
-  width: 30%;
-  height: 300px;
-  vertical-align: middle;
-  border: 2px solid #ccc;
-  margin: 10px;
-  padding: 5px;
-  background-color: #fff;
-  -moz-border-radius: 4%;
-  -webkit-border-radius: 4%;
-  border-radius: 4%;
 }
