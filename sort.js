@@ -1,8 +1,6 @@
-var test = '141241414124'
-
 var message = document.querySelector('.status');
 var po = document.getElementById('pokemons');
-<<<<<<< HEAD
+
 var dta;
 
 function req() {
@@ -29,7 +27,7 @@ function req() {
 			message.innerHTML = xhr.status + ': ' + xhr.statusText;
 
 		}
-=======
+    
 var load = document.getElementById('loader');
 
 var limit = 6;
@@ -49,7 +47,6 @@ function next() {
 	
 	offset = offset + limit;
 	
->>>>>>> 114869063340760034810603c4627f5532784fc4
 }
 
 
@@ -61,7 +58,6 @@ function getpokemon() {
 	var name;
 	var imgCont;
 	var img;
-<<<<<<< HEAD
 
 	for(i = 0; i < dta.length; i++) {
 		card = document.createElement('div');
@@ -70,7 +66,6 @@ function getpokemon() {
 		name = document.createElement('h2');
 		name.innerHTML = dta[i].name;
 
-=======
 	
 	dtaRes.forEach(function(item, i, dtaRes) {
 		pokemonUrl = item.url;
@@ -95,12 +90,10 @@ function getpokemon() {
 		imgCont = document.createElement('div');
 		imgCont.className = 'img_container';
 		
->>>>>>> 114869063340760034810603c4627f5532784fc4
 		img = document.createElement('img');
 		
 		img.setAttribute('src', 'http://pokeapi.co/media/img/'+ dta.id +'.png');
 
-<<<<<<< HEAD
 		card.appendChild(img);
         card.appendChild(name);
 		po.appendChild(card);
@@ -109,7 +102,6 @@ function getpokemon() {
 }
 
 req();
-=======
 		
 		cardBack.appendChild(imgCont);
 		imgCont.appendChild(img);
@@ -147,6 +139,3 @@ function req() {
 
 next();
 
-
-
->>>>>>> 114869063340760034810603c4627f5532784fc4
