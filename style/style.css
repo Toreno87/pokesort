@@ -196,6 +196,7 @@ button {
 
 /* line 83, ../sass/base/_general.scss */
 #loader {
+  display: none;
   position: fixed;
   width: 100%;
   height: 100%;

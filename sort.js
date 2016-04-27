@@ -1,108 +1,88 @@
-var elemets = {
-	message: document.querySelector('.status'),
-	po: document.getElementById('pokemons'),
-	load: document.getElementById('loader')
-};
-
-var data = {
-	limit: 6,
-	offset: 0,
-	dtaRes:0,
-	apiUrl: 'http://pokeapi.co/api/v2/pokemon/',
-	pokemonUrl:0
-};
-
-var dta;
-
-function next() {
-	data.pokemonUrl = data.apiUrl + '?limit=' + data.limit + '&offset=' + data.offset;
+var Elements = function() {
 	
-	req(data.pokemonUrl);
-	console.log(dta);
-	data.dtaRes = dta.results;
+	this.loader = document.getElementById('loader');
+	this.pokemons = document.getElementById('pokemons');
 	
+	this.dta = '';
 	
-	getpokemon();
+	this.apiUrl = 'http://pokeapi.co';
+	this.url = '/api/v1/pokemon/?limit=12&offset=';
+	this.offset = 0;
 	
-	data.offset = data.offset + data.limit;
-	
-}
-
-function req(pokUrl) {
-	
-	var xhr = new XMLHttpRequest();
-	
-	xhr.open('GET', pokUrl, false);
-	xhr.send();
-	
-		if(xhr.status == 200) {
-			elemets.message.innerHTML = "Base Pokemons";
-			elemets.load.style.display = "block";
-
-			var data = JSON.parse(xhr.responseText);
-			
-			data.dta = data;
+	this.ajax = function(url, clbk) {
+		clearTimeout(el.loadTimer);
+		el.loader.style.display = 'block';
+		
+		var xhr = new XMLHttpRequest();
+		
+		xhr.open('GET', el.apiUrl + el.url + el.offset, true);
+		
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200) {
+				var data = JSON.parse(xhr.responseText);
 				
-			} else {
-				console.log('ERR');
-
-				elemets.message.innerHTML = xhr.status + ': ' + xhr.statusText;
+				el.dta = data.objects;
+				
+				el.loadTimer = setTimeout(function() {
+					el.loader.style.display = 'none';
+				}, 200);
+				
+				if(clbk) {
+					clbk(data);
+				}
 			}
-		elemets.load.style.display = "none";
-}
-
-function getpokemon() {
-	var card = {
-		flipCont: null,
-		flipper: null,
-		cardBack: null,
-		cardFront: null,
-		name: null,
-		imgCont: null,
-		img: null
-	};
+		};
+		
+		
+		xhr.send();
+	}
 	
-	var dtRs = data.dtaRes;
+	this.next = function() {
+		
+		el.ajax();
+		
+		for(var i = 0; i < el.dta.length; i++) {
+			el.createCard(i);
+			
+		}
+		
+		el.offset = el.offset + 12;
+		
+	}
 	
-//	dtRs.forEach(function(item, i, dtRs) {
-//		
-//		pokemonUrl = item.url;
-//		req();
-//		
-//		card.flipCont = document.createElement('div');
-//		card.flipCont.className = 'flipper_container';
-//		
-//		card.flipper = document.createElement('div');
-//		card.flipper.className = 'flipper';
-//		
-//		card.cardBack = document.createElement('div');
-//		card.cardBack.className = 'back';
-//		
-//		card.cardFront = document.createElement('div');
-//		card.cardFront.id = 'card__' + data.dta.name;
-//		card.cardFront.className = 'front';
-//
-//		card.name = document.createElement('h2');
-//		card.name.innerHTML = data.dta.name;
-//		
-//		card.imgCont = document.createElement('div');
-//		card.imgCont.className = 'img_container';
-//		
-//		card.img = document.createElement('img');
-//		
-//		card.img.setAttribute('src', 'http://pokeapi.co/media/img/'+ data.dta.id +'.png');
-//
-//		card.cardBack.appendChild(imgCont);
-//		card.imgCont.appendChild(img);
-//		card.cardBack.appendChild(name);
-//		card.flipper.appendChild(cardBack);
-//		card.flipper.appendChild(cardFront);
-//		card.flipCont.appendChild(flipper);
-//		elemets.po.appendChild(flipCont);
-//	
-//		});
-}
+	this.createCard = function(i) {
+		
+		var flipperContainer = document.createElement('div'),
+		flipper = document.createElement('div'),
+		front = document.createElement('div'),
+		back = document.createElement('div'),
+		img_container = document.createElement('div'),
+		img = document.createElement('img'),
+		name = document.createElement('h2');
+		
+		flipperContainer.className = 'flipper_container';
+		flipper.className = 'flipper';
+		front.className = 'front';
+		back.className = 'back';
+		img_container.className = 'img_container';
+		img.className = 'img_pokemon';
+		
+		el.pokemons.appendChild(flipperContainer);
+		flipperContainer.appendChild(flipper);
+		flipper.appendChild(front);
+		flipper.appendChild(back);
+		back.appendChild(img_container);
+		img_container.appendChild(img);
+		back.appendChild(name);
+		
+		name.innerHTML = el.dta[i].name;
+		img.setAttribute('src', el.apiUrl + '/media/img/' + el.dta[i].national_id + '.png');
+		
+	}
+	
+};
 
-next();
+window.el = new Elements();
+el.next();
 
 
