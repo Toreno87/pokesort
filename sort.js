@@ -2,6 +2,7 @@ var Elements = function() {
 	
 	this.loader = document.getElementById('loader');
 	this.pokemons = document.getElementById('pokemons');
+	this.nextBtn = document.getElementById('next_btn');
 	
 	this.dta = '';
 	
@@ -33,17 +34,24 @@ var Elements = function() {
 			}
 		};
 		
-		
 		xhr.send();
 	}
 	
 	this.next = function() {
-		
 		el.ajax();
 		
 		for(var i = 0; i < el.dta.length; i++) {
 			el.createCard(i);
+		}
+		
+		var flipCurrent = document.querySelectorAll('.flipper');
+		
+		for(var i = 0; i < flipCurrent.length; i++) {
 			
+			flipCurrent[i].addEventListener('click', function() {
+			
+				el.cardRotate(this, flipCurrent);
+			});
 		}
 		
 		el.offset = el.offset + 12;
@@ -55,6 +63,10 @@ var Elements = function() {
 		var flipperContainer = document.createElement('div'),
 		flipper = document.createElement('div'),
 		front = document.createElement('div'),
+		attribute = document.createElement('div'),
+		hp = document.createElement('div'),
+		attack = document.createElement('div'),
+		defense = document.createElement('div'),
 		back = document.createElement('div'),
 		img_container = document.createElement('div'),
 		img = document.createElement('img'),
@@ -63,6 +75,10 @@ var Elements = function() {
 		flipperContainer.className = 'flipper_container';
 		flipper.className = 'flipper';
 		front.className = 'front';
+		attribute.className = 'attribute'; 
+		hp.className = 'frontside'; 
+		attack.className = 'frontside'; 
+		defense.className = 'frontside';
 		back.className = 'back';
 		img_container.className = 'img_container';
 		img.className = 'img_pokemon';
@@ -70,6 +86,12 @@ var Elements = function() {
 		el.pokemons.appendChild(flipperContainer);
 		flipperContainer.appendChild(flipper);
 		flipper.appendChild(front);
+		
+		front.appendChild(attribute).innerHTML = '<span>Attribute</span>';
+		front.appendChild(hp).innerHTML = '<span>HP:</span> ' + el.dta[i].hp;
+		front.appendChild(attack).innerHTML = '<span>Attack:</span>' + el.dta[i].attack;
+		front.appendChild(defense).innerHTML = '<span>Defense:</span> ' + el.dta[i].defense;
+		
 		flipper.appendChild(back);
 		back.appendChild(img_container);
 		img_container.appendChild(img);
@@ -80,9 +102,25 @@ var Elements = function() {
 		
 	}
 	
+	this.cardRotate = function(e, flipperClass) {
+		
+		for(var i = 0; i < flipperClass.length; i++) {
+			flipperClass[i].removeAttribute('id', 'flipper_hover');
+		}
+		
+		e.setAttribute('id', 'flipper_hover');
+	}
 };
 
 window.el = new Elements();
+
 el.next();
+
+el.nextBtn.addEventListener('click', function() {
+	el.next();
+});
+
+
+
 
 

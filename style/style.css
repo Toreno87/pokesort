@@ -214,25 +214,19 @@ button {
   perspective: 1000;
 }
 
-/* line 11, ../sass/layout/_card.scss */
-.flipper_container:hover .front {
-  visibility: hidden;
+/* line 7, ../sass/layout/_card.scss */
+#flipper_hover {
+  -moz-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
-/* line 15, ../sass/layout/_card.scss */
-.flipper_container:hover .back {
-  -moz-transform: scale(1.1, 1.1);
-  -ms-transform: scale(1.1, 1.1);
-  -webkit-transform: scale(1.1, 1.1);
-  transform: scale(1.1, 1.1);
-  -moz-transition: ease-out 0.6s;
-  -o-transition: ease-out 0.6s;
-  -webkit-transition: ease-out 0.6s;
-  transition: ease-out 0.6s;
+/* line 11, ../sass/layout/_card.scss */
+.flipper_container:hover .flipper {
   cursor: pointer;
 }
 
-/* line 21, ../sass/layout/_card.scss */
+/* line 15, ../sass/layout/_card.scss */
 .flipper_container, .front, .back {
   width: 180px;
   height: 260px;
@@ -241,7 +235,7 @@ button {
   border-radius: 3%;
 }
 
-/* line 27, ../sass/layout/_card.scss */
+/* line 21, ../sass/layout/_card.scss */
 .flipper {
   -moz-transition: 0.6s;
   -o-transition: 0.6s;
@@ -253,7 +247,7 @@ button {
   position: relative;
 }
 
-/* line 33, ../sass/layout/_card.scss */
+/* line 27, ../sass/layout/_card.scss */
 .front, .back {
   -moz-backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -263,7 +257,7 @@ button {
   left: 0;
 }
 
-/* line 40, ../sass/layout/_card.scss */
+/* line 34, ../sass/layout/_card.scss */
 .back {
   text-align: center;
   z-index: 2;
@@ -275,15 +269,34 @@ button {
   transition: ease-in 0.3s;
 }
 
-/* line 48, ../sass/layout/_card.scss */
+/* line 42, ../sass/layout/_card.scss */
+.attribute {
+  font-size: 24px;
+  font-size: 2.4rem;
+  text-align: center;
+  padding: 45px 0 15px 0;
+  color: white;
+}
+
+/* line 49, ../sass/layout/_card.scss */
+.frontside {
+  font-size: 22px;
+  font-size: 2.2rem;
+  padding: 5px 0;
+  text-align: left;
+  color: white;
+}
+
+/* line 56, ../sass/layout/_card.scss */
 .front {
   -moz-transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
   background-color: coral;
+  padding: 0px 20px;
 }
 
-/* line 53, ../sass/layout/_card.scss */
+/* line 62, ../sass/layout/_card.scss */
 .img_container {
   position: relative;
   width: 140px;
@@ -295,7 +308,7 @@ button {
   border-radius: 50%;
 }
 
-/* line 62, ../sass/layout/_card.scss */
+/* line 71, ../sass/layout/_card.scss */
 .img_container img {
   display: block;
   margin: 0 auto;

@@ -4,17 +4,11 @@
 	@include perspective(1000);
 }
 
-//.flipper_container:hover .flipper {
-//	@include rotateY(180deg);
-//}
-
-.flipper_container:hover .front{
-	visibility: hidden;
+#flipper_hover {
+	@include rotateY(180deg);
 }
 
-.flipper_container:hover .back {
-	@include scale(1.100);
-	@include transition(0.6s ease-out);
+.flipper_container:hover .flipper{
 	cursor: pointer;
 }
 
@@ -45,9 +39,24 @@
 	@include transition(0.3s ease-in);
 }
 
+.attribute {
+	@include frem(24px);
+	text-align: center;
+	padding: 45px 0 15px 0;
+	color: white;
+}
+
+.frontside {
+	@include frem(22px);
+	padding: 5px 0;
+	text-align: left;
+	color: white;
+}
+
 .front {
 	@include rotateY(180deg);
 	background-color: coral;
+	padding: 0px 20px;
 }
 
 .img_container {
