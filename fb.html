@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Elections 2016</title>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript">
+     //https://graph.facebook.com/oauth/access_token?client_id=874067689406744&client_secret=62a161899a6176a6b15eeac209851c41&grant_type=client_credentials  
+       window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '874067689406744',
+            xfbml      : true,
+            status     : true,
+            version    : 'v2.8'
+          });
+        /* FB.getLoginStatus(function(response) {
+          if (response.status === 'connected') {
+            var acessToken = response.authResponse.accessToken;
+            setInterval(function(){  
+                 FB.api(
+                  //'/20531316728_10154835146021729',
+                  '/1445298755762857_1666242333668497/?access_token=874067689406744|hX1mjBsRdDOR2oJASFsjc3tcIcs',
+                  'GET',
+                  {"fields":"     reactions.type(LIKE).summary(total_count).limit(0).as(like),     reactions.type(LOVE).summary(total_count).limit(0).as(love),     reactions.type(WOW).summary(total_count).limit(0).as(wow),     reactions.type(HAHA).summary(total_count).limit(0).as(haha),     reactions.type(SAD).summary(total_count).limit(0).as(sad),     reactions.type(ANGRY).summary(total_count).limit(0).as(angry)"},
+                  function(response) {
+                      //console.log(response)
+                      var likes = response.like;
+                      var love = response.love;
+                      console.log('Likes - ' + likes.summary.total_count);
+                      console.log('Loves - ' + love.summary.total_count);
+                      $('.ch').text(likes.summary.total_count);
+                   	  $('.ct').text(love.summary.total_count);
+                  }
+                );
+            },5000);
+          }else{
+          	alert('False!');
+          }
+        });*/
+      setInterval(function(){  
+                 FB.api(
+                  //'/20531316728_10154835146021729',
+                  '/123660407723341_1121320117957360/?access_token=874067689406744|hX1mjBsRdDOR2oJASFsjc3tcIcs',
+                  'GET',
+                  {"fields":"     reactions.type(LIKE).summary(total_count).limit(0).as(like),     reactions.type(LOVE).summary(total_count).limit(0).as(love),     reactions.type(WOW).summary(total_count).limit(0).as(wow),     reactions.type(HAHA).summary(total_count).limit(0).as(haha),     reactions.type(SAD).summary(total_count).limit(0).as(sad),     reactions.type(ANGRY).summary(total_count).limit(0).as(angry)"},
+                  function(response) {
+                      //console.log(response)
+                      var likes = response.like;
+                      var love = response.love;
+                      console.log('Likes - ' + likes.summary.total_count);
+                      console.log('Loves - ' + love.summary.total_count);
+                      $('.ch').text(likes.summary.total_count);
+                   	  $('.ct').text(love.summary.total_count);
+                  }
+                );
+            },5000);
+       
+      };
+     
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+      
+    </script>
+	<style>
+		html {
+		  box-sizing: border-box;
+		}
+		*, *:before, *:after {
+		  box-sizing: inherit;
+		}
+		body{
+			margin: 0;
+            background:url('https://mbmpartner.com/files/landings/725/bg.png') no-repeat;
+          	background-position:50% 50%;
+		}
+		#wrap{
+			position: relative;
+			margin: 0px auto;
+			width: 1280px;
+			height: 720px;
+		}
+		.cover{
+			padding: 20px 80px;
+			position: absolute;
+			width: 1280px;
+			height: 720px;
+			top: 0;
+			left: 0;
+			z-index: 10;
+		}
+		h1{
+			font-size: 27px;
+            text-transform: uppercase;
+            text-align: center;
+            color: #272727;
+			font-family: "Helvetica Neue", Helvetica, sans-serif;
+			margin: 0 0 25px 0;
+		}
+      h2{
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        text-align: center;
+        color: #272727;      
+      }
+		.blur{
+		background-color: gray;
+		opacity: .8;
+		  -webkit-filter: blur(5px);
+		  -moz-filter: blur(5px);
+		  -o-filter: blur(5px);
+		  -ms-filter: blur(5px);
+		  filter: blur(5px);
+		}
+		.avatar img{
+			display: block;
+			/*border-radius: 50%;*/
+			width: 350px;
+			height: 350px;
+			margin: 0 auto;
+		}
+		.hilary, .trump{
+			display: inline-block;
+			width: 45%;
+			
+			padding: 15px 0;
+		}
+		.trump{
+			margin-left: 9%;
+		}
+		.meta img{
+			display: block;
+			width: 60px;
+			height: 60px;
+			margin: 20px auto;
+		}
+		.votes{
+			text-align: center;
+			color: #fff;
+			font-weight: 30px;
+			display: block;
+			width: 100%;
+		}	
+		.ct, .ch{
+			width: 100%;
+			display: block;
+			color: #272727;
+			font-size: 40px;
+			text-align: center;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		}
+		.v{
+			text-align: center;
+			font-weight: bold;
+			font-size: 16px;
+			text-align: center;
+			margin-top: 10px;
+			font-family: Verdana, Geneva, sans-serif;
+			color: #272727;
+		}
+		.hilary h3, .trump h3{
+			text-align:center;
+			font-family: Verdana, Geneva, sans-serif;
+			font-size:24px;
+			text-transform:uppercase;
+		}
+      .img{
+      	display:block;
+        width:120px;
+        height:120px;
+        margin:0 auto;
+        background:url('https://mbmpartner.com/files/landings/725/FB_like.gif') no-repeat;
+        background-size:100%;
+      }
+      .img.i-2{
+      	display:block;
+        margin:0 auto;
+        background:url('https://mbmpartner.com/files/landings/725/FB_love.gif') no-repeat;
+        background-size:100%;
+      }
+      .cont{
+      	max-width: 800px;
+  		margin: 0 auto;
+      }
+      #jivo_top_wrap, #widget, #jivo_container{
+      	display:none !important;
+      }
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="cover">
+			<div class="title">
+				<h1>Есть ли у Вас бизнес-партнер, которому Вы доверяете?</h1>
+				<h2>Узнаем, кого больше! Голосуйте сейчас!</h2>
+			</div>
+			<div class="cont">
+				<div class="hilary">
+					<!--<h3>Удаленно</h3>-->
+					<div class="avatar">						
+						<img src="https://mbmpartner.com/files/landings/739/1.jpg" alt="">
+					</div>
+					<div class="meta">
+						<!--<img src="https://mbmpartner.com/files/landings/725/tup.png" alt="" class="icon">-->
+                      	<div class="img i-1"></div>
+						<div class="ch"></div>
+						<div class="v">VOTES</div>
+					</div>
+				</div>
+				<div class="trump">					
+					<!--<h3>В офисе</h3>-->
+					<div class="avatar">
+						<img src="https://mbmpartner.com/files/landings/739/2.jpg" alt="">
+					</div>
+					<div class="meta">
+						<!--<img src="https://mbmpartner.com/files/landings/725/h.png" alt="" class="icon">-->
+                      	<div class="img i-2"></div>
+						<div class="ct"></div>
+						<div class="v">VOTES</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<video src="https://mbmpartner.com/files/landings/725/loop.mp4" autoplay="true" loop="true"></video>
+	</div>
+  
+  
+  
+  
+<style>
+  iframe#jivo_container{
+  	display:none !important;
+    opacity:0 !important;
+  }
+  div#jivo-iframe-container.jivo-iframe-container-right.jivo-state-widget{
+  	display:none !important;
+    opacity:none !important;
+    box-shadow:none !important;
+  }
+  </style>
+
+</body>
+</html>
